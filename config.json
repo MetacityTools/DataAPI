@@ -7,10 +7,13 @@
     "applications": {
         "flask": {
             "type": "python 3.8",
-            "path": "/home/monika/dataapi/app",
+            "path": "/home/monika/dataapi/",
             "home": "/home/monika/dataapi/env/",
             "module": "wsgi",
-            "callable": "app"
+            "callable": "app",
+            "user": "monika",
+            "group": "monika"
+
         }
     }
 }
