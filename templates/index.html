@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metacity DataAPI</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            padding: 0;
+            margin: 0;
+        }
+
+        #root {
+            max-width: 30rem;
+            margin: 1rem auto;
+        }
+
+        @media (max-width: 30rem) {
+            #root {
+                margin: 1rem
+            }
+        }
+
+        .dataset {
+            margin-top: 1rem;
+        }
+
+        .dataset .name {
+            font-size: 1em;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .dataset .url {
+            font-size: 0.8em;
+            font-weight: normal;
+            font-family: monospace;
+            padding: 0.5rem 1rem;
+            background: #eee;
+            margin-bottom: 0.5rem;
+        }
+
+        .dataset .time {
+            font-size: 0.8em;
+            font-weight: normal;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <section id="root">
+        <h1>Metacity DataAPI</h1>
+        <p>Currently, the following datasets are available:</p>
+        {% for dataset in datasets %}
+        <div class="dataset">
+            <div class="name">{{ dataset.name }}</div>
+            <div class="url">{{ dataset.url }}</div>
+            <div class="time">Last changed: {{ dataset.timeChanged }}</div>
+        </div>
+        {% endfor %}
+    </section>
+</body>
+</html>
+
