@@ -10,6 +10,7 @@
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             padding: 0;
             margin: 0;
+            color: #333;
         }
 
         #root {
@@ -47,11 +48,26 @@
             font-weight: normal;
             font-family: monospace;
         }
+
+        footer {
+            margin-top: 2rem;
+            font-size: 0.8em;
+            font-weight: normal;
+            color: #888;
+            text-align: center;
+        }
+        a {
+            color: #333;
+        }
+
+        footer a {
+            color: #888;
+        }
     </style>
 </head>
 <body>
     <section id="root">
-        <h1>Metacity DataAPI</h1>
+        <h1>📦 Metacity DataAPI</h1>
         <p>Currently, the following datasets are available:</p>
         {% for dataset in datasets %}
         <div class="dataset">
@@ -60,6 +76,8 @@
             <div class="time">Last changed: {{ dataset.timeChanged }}</div>
         </div>
         {% endfor %}
+        <p class="docs">Please refer to our <a href="https://docs.metacity.cc">documentation</a> on how to use these datasets.</p>
+        <footer>&copy; 2022 stdio s.r.o. All rights reserved, <a href="https://www.stdio.cz">www.stdio.cz</a></footer>
     </section>
 </body>
 </html>

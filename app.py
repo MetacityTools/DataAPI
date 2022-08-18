@@ -6,10 +6,16 @@ import os
 import json
 
 
+CONFIG = "apiConfig.json"
+DEBUG = False
+if DEBUG:
+    CONFIG = "devConfig.json"
+
+
 def read_config():
     # get directory of this file
     dirname = os.path.dirname(os.path.realpath(__file__))
-    with open(os.path.join(dirname, 'apiConfig.json')) as f:
+    with open(os.path.join(dirname, CONFIG)) as f:
         return json.load(f)
 
 
@@ -27,7 +33,7 @@ def get_dataset_list():
     dataset_names = scan_filesystem(config["datasetDir"])
     datasets = []
     for dataset_name in dataset_names:
-        ts = os.path.getmtime(os.path.join(config["datasetDir"], dataset_name))
+        ts = os.path.getmtime(os.path.join(config["datasetDir"], dataset_name, 'layout.json'))
         datasets.append({
             "name": dataset_name,
             "url": os.path.join(config["rootAddress"], dataset_name),
