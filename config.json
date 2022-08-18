@@ -7,9 +7,9 @@
     "applications": {
         "flask": {
             "type": "python 3.8",
-            "path": "/home/monika/dataapi/",
+            "path": "/home/monika/dataapi",
             "home": "/home/monika/dataapi/env/",
-            "module": "wsgi",
+            "module": "app",
             "callable": "app",
             "user": "monika",
             "group": "monika"
