@@ -1,4 +1,4 @@
 {
-    "datasetDir": "data",
+    "datasetDir": "/home/monika/data",
     "rootAddress": "https://data.metacity.cc/"
 }

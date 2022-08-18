@@ -7,7 +7,9 @@ import json
 
 
 def read_config():
-    with open('apiConfig.json') as f:
+    # get directory of this file
+    dirname = os.path.dirname(os.path.realpath(__file__))
+    with open(os.path.join(dirname, 'apiConfig.json')) as f:
         return json.load(f)
 
 
