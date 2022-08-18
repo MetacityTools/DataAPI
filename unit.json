@@ -1,0 +1,16 @@
+{
+    "listeners": {
+        "*:80": {
+            "pass": "applications/flask"
+        }
+    },
+    "applications": {
+        "flask": {
+            "type": "python 3.8",
+            "path": "/home/monika/dataapi/app",
+            "home": "/home/monika/dataapi/env/",
+            "module": "wsgi",
+            "callable": "app"
+        }
+    }
+}
