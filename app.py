@@ -17,9 +17,9 @@ def scan_filesystem(datasetDir):
     datasets = os.listdir(datasetDir)
     filtered = []
     for dataset in datasets:
-        if os.path.join(datasetDir, dataset):
-            filtered.append(dataset[:-5])
-    return datasets
+        if os.path.exists(os.path.join(datasetDir, dataset, 'layout.json')):
+            filtered.append(dataset)
+    return filtered
 
 
 def get_dataset_list():
