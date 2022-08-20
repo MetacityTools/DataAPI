@@ -7,7 +7,7 @@ import json
 
 
 CONFIG = "apiConfig.json"
-DEBUG = True
+DEBUG = False
 if DEBUG:
     CONFIG = "devConfig.json"
 
