@@ -115,7 +115,9 @@
             <div class="description">
             {% if dataset.description is not none %}
             {% for key, value in dataset.description.items() %}
+                {% autoescape false %}
                 <div class="item"><span class="title">{{ key.capitalize() }}</span> {{ value }}</div>
+                {% endautoescape %}
             {% endfor %}
             {% endif %}
             </div>
