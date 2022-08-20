@@ -15,7 +15,7 @@
 
         #root {
             max-width: 30rem;
-            margin: 1rem auto;
+            margin: 2rem auto;
         }
 
         @media (max-width: 30rem) {
@@ -25,7 +25,9 @@
         }
 
         .dataset {
-            margin-top: 1rem;
+            margin-top: 2rem;
+            border-left: 1px solid #ccc;
+            padding-left: 1rem;
         }
 
         .dataset .name {
@@ -56,8 +58,45 @@
             color: #888;
             text-align: center;
         }
+
         a {
             color: #333;
+        }
+
+        p {
+            line-height: 1.5;
+        }
+
+        h1 {
+            margin-bottom: 0rem;
+        }
+
+        .sub {
+            font-size: 0.8em;
+            margin-top: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: normal;
+            font-family: monospace;
+        }
+
+        .description {
+            font-size: 0.8em;
+            font-weight: normal;
+            font-family: monospace;
+            margin-bottom: 1rem;
+            margin-top: 1rem;
+        }
+
+        .description .item {
+            margin-bottom: 0.2rem;
+        }
+
+        .description .item .title {
+            color: #888;
+        }
+
+        .docs {
+            margin-top: 4rem;
         }
 
         footer a {
@@ -67,11 +106,19 @@
 </head>
 <body>
     <section id="root">
-        <h1>📦 Metacity DataAPI</h1>
-        <p>Currently, the following datasets are available:</p>
+        <h1>Metacity DataAPI</h1>
+        <p class="sub">Tile service providing GLTF models for BananaGL library</p>
+        <p>The service is provided in the <a href="https://en.wikipedia.org/wiki/Best-effort_delivery">best-effort</a> mode. The following datasets are available:</p>
         {% for dataset in datasets %}
         <div class="dataset">
-            <div class="name">{{ dataset.name }}</div>
+            <div class="name">📦 {{ dataset.name }}</div>
+            <div class="description">
+            {% if dataset.description is not none %}
+            {% for key, value in dataset.description.items() %}
+                <div class="item"><span class="title">{{ key.capitalize() }}</span> {{ value }}</div>
+            {% endfor %}
+            {% endif %}
+            </div>
             <div class="url">{{ dataset.url }}</div>
             <div class="time">Last changed: {{ dataset.timeChanged }}</div>
         </div>

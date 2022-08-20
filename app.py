@@ -7,7 +7,7 @@ import json
 
 
 CONFIG = "apiConfig.json"
-DEBUG = False
+DEBUG = True
 if DEBUG:
     CONFIG = "devConfig.json"
 
@@ -28,6 +28,12 @@ def scan_filesystem(datasetDir):
     return filtered
 
 
+def get_description(datasetDir):
+    if os.path.exists(os.path.join(datasetDir, 'description.json')):
+        with open(os.path.join(datasetDir, 'description.json')) as f:
+            return json.load(f)  
+
+
 def get_dataset_list():
     config = read_config()
     dataset_names = scan_filesystem(config["datasetDir"])
@@ -37,7 +43,8 @@ def get_dataset_list():
         datasets.append({
             "name": dataset_name,
             "url": os.path.join(config["rootAddress"], dataset_name),
-            "timeChanged": datetime.utcfromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+            "timeChanged": datetime.utcfromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S'),
+            "description": get_description(os.path.join(config["datasetDir"], dataset_name))    
         })
     return datasets
 
