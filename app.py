@@ -29,9 +29,13 @@ def scan_filesystem(datasetDir):
 
 
 def get_description(datasetDir):
-    if os.path.exists(os.path.join(datasetDir, 'description.json')):
-        with open(os.path.join(datasetDir, 'description.json')) as f:
-            return json.load(f)  
+    try:
+        if os.path.exists(os.path.join(datasetDir, 'description.json')):
+            with open(os.path.join(datasetDir, 'description.json')) as f:
+                return json.load(f)  
+    except Exception as e:
+        print(e)
+        return None
 
 
 def get_dataset_list():
